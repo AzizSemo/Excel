@@ -12,6 +12,8 @@ for id in Vlans:
        for i in range(first, last+1):
            print(i)
        print('**********')
+
+f.close()
       # print(last)
        #VLAN.append(id.strip())
 #print(VLAN)
