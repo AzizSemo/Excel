@@ -1,18 +1,34 @@
 import pandas as pd
+import csv   
+
 
 def From_eExcel():
-  data = pd.read_excel('VLANs.xlsx')
-  VLANs= data['VLAN'].tolist()
-  Value= data['Value'].tolist()
-  #Value= data["Value"].fillna(2, inplace = True) 
-  return VLANs,Value
+  try:
+      #data =
+      data = pd.read_excel('OEDIV-DC-VLANs.xlsx') 
+      VLANs= data['vlan'].tolist()
+      Value= data['LAN_UCS_Power_TR_NK_aka usr'].tolist()
+      return VLANs,Value
+  except IOError:
+    print("Could not Find EXCEL file: ")
+    return "Error"
+
 
 def Compare_Vlan():
-      Vlans= open("My_Vlans.txt", "r")
+   try:
+      Vlans= open("VLAN.txt", "r")
       VLANS = []
       Vlan_Ohne_comma = []
       minus = '-'
       #comma = ','
+      '''
+      try:
+    f = open('somefile.txt', 'r')
+    print(f.read())
+    f.close()
+except IOError:
+    print('file not found')
+      '''
       '''for vl in Vlans:
         if comma in vl:
            vl =vl.replace(',','')
@@ -33,5 +49,15 @@ def Compare_Vlan():
             VLANS.append(id)   
       Vlans.close()
       return VLANS
+   except IOError:
+    print("Could not Find TXT file: ")
+    return "Error"
+def Create_File(Result_v):
+       f = open("Result.txt", "w")
+       for i in Result_v:
+          f.write(str(i).rstrip())
+          f.write('\n')
+       print("File is Cteated")
+       f.close()
 
 
