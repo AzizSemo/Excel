@@ -1,29 +1,13 @@
-import Functions
 
-f = open("My_Vlans.txt","r")
-print(f)
-Vlans = f
-VLAN = []
-Vlan_Ohne_comma = []
-minus = '-'
-comma = ','
-for vl in Vlans:
-      if comma in vl:
-           Vlan_Ohne_comma.append(vl.split(','))
-      else :
-           Vlan_Ohne_comma.append(vl)
-#print(Vlan_Ohne_comma) 
-for id in Vlan_Ohne_comma:
-     '''if minus in id:
-       range1 = id.split('-')
-       first =int(range1[0]) 
-       last = int(range1[1])
-       for i in range(first, last+1):
-           print(i)
-       print('**********')
-      # print(last)
-       #VLAN.append(id.strip())'''
-     print(id)
-f.close()
-#print(VLAN)
+import pandas as pd
 
+data = pd.read_excel('VLANs.xlsx')
+VLANs= data['VLAN'].tolist()
+Value= data['Value'].tolist()
+#Value= data["Value"].fillna(2, inplace = True) )
+print(Value)
+for i in Value :
+    if str(i) == '1.0':
+        print(i)
+    else:
+        print('Empty')
