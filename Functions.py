@@ -7,7 +7,7 @@ def From_eExcel():
       #data =
       data = pd.read_excel('OEDIV-DC-VLANs.xlsx') 
       VLANs= data['vlan'].tolist()
-      Value= data['LAN_UCS_Power_TR_NK_aka usr'].tolist()
+      Value= data['LAN_UCS_Power_TR_NK_aka'].tolist()
       return VLANs,Value
   except IOError:
     print("Could not Find EXCEL file: ")
