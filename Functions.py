@@ -5,10 +5,10 @@ import csv
 def From_eExcel():
   try:
       #data =
-      data = pd.read_excel('OEDIV-DC-VLANs.xlsx') 
-      VLANs= data['vlan'].tolist()
-      Value= data['LAN_UCS_Power_TR_NK_aka'].tolist()
-      return VLANs,Value
+      data = pd.read_excel('OEDIV-DC-VLANs.xlsx') #read from Excel File
+      VLANs= data['vlan'].tolist() #read contants of specefic columns and convert it to list
+      Value= data['LAN_UCS_Power_TR_NK_aka'].tolist()#read contants of specefic columns and convert it to list
+      return VLANs,Value #return tow values
   except IOError:
     print("Could not Find EXCEL file: ")
     return "Error"
@@ -21,21 +21,6 @@ def Compare_Vlan():
       Vlan_Ohne_comma = []
       minus = '-'
       #comma = ','
-      '''
-      try:
-    f = open('somefile.txt', 'r')
-    print(f.read())
-    f.close()
-except IOError:
-    print('file not found')
-      '''
-      '''for vl in Vlans:
-        if comma in vl:
-           vl =vl.replace(',','')
-           Vlan_Ohne_comma.append(vl.split())
-        else :
-           Vlan_Ohne_comma.append(vl)
-       print(Vlan_Ohne_comma) '''
       for id in Vlans:
          id
          #print(id + " it is a range")
@@ -52,7 +37,7 @@ except IOError:
    except IOError:
     print("Could not Find TXT file: ")
     return "Error"
-def Create_File(Result_v):
+def Create_File(Result_v):#create a Text File and put the  the Result in it
        f = open("Result.txt", "w")
        for i in Result_v:
           f.write(str(i).rstrip())
